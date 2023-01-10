@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block my_content %}
+<h1>Stock</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Code</th>
+        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col">Category</th>
+        <th scope="col">Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for record in stock %}
+    <tr>
+        <td>{{ record.id }}</td>
+        <td>{{ record.product.code }}</td>
+        <td>{{ record.product.description }}</td>
+        <td>{% if record.image %}<img src="{{ record.image.url }}" height="30" width="40">{% endif %}</td>
+        <td>{{ record.product.category.name }}</td>
+        <td>{{ record.quantity }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
